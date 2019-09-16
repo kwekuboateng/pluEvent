@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Ratings</title>
+  <title>Possitech Ratings</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
                                 <label for="star2" title="text">2 stars</label>
                                 <input type="radio" id="star1" name="rate" checked="checked" value="1" />
                                 <label for="star1" title="text">1 star</label>
-                              
+
                         </div>
                         <div class="text-center">
                                 <button class="btn btn-success" type="button" onclick="submitRating()">Submit Rating</button>
@@ -78,11 +78,11 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-    var sID = getParameterByName('sID'); 
-    var eID = getParameterByName('eID'); 
-    var rMsg = getParameterByName('rMsg'); 
+    var sID = getParameterByName('sID');
+    var eID = getParameterByName('eID');
+    var rMsg = getParameterByName('rMsg');
     var logoUrl = getParameterByName('logoUrl');
-    
+
     document.querySelector('#logoUrl').src = logoUrl;
 
     var star1 = document.getElementById('star1');
@@ -106,10 +106,10 @@
         }else {
             console.log('nothing checked');
         }
-    
+
 
       var http = new XMLHttpRequest();
-      var loginUrl = `${baseUrl}/api/ratings` 
+      var loginUrl = `${baseUrl}/api/ratings`
       var params = JSON.stringify({
         score: this.score,
         eventId: eID,
@@ -117,7 +117,7 @@
       });
       console.log(JSON.parse(params), 'parrrams');
       http.open('POST', loginUrl, true);
- 
+
          //Send the proper header information along with the request
          http.setRequestHeader("Content-Type", "application/json");
 
@@ -131,7 +131,7 @@
             var x = document.getElementById("toast")
             x.className = "show";
             setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
-              
+
           }else if(http.readyState == 4 && http.status == 400){
             document.getElementById('desc').innerHTML = 'Please select your rating';
             var x = document.getElementById("toast")
@@ -141,9 +141,9 @@
       }
         // document.getElementById('loading3').style.display = 'inline-block'
         http.send(params);
-        
+
     }
-    
+
   </script>
 
 </body>
